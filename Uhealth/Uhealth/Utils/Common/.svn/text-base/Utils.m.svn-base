@@ -1,0 +1,99 @@
+//
+//  Utils.m
+//  SocketDemo
+//
+//  Created by smy on 2017/11/24.
+//  Copyright © 2017年 smy. All rights reserved.
+//
+
+#import "Utils.h"
+
+@implementation Utils
++ (NSString *)jsonString:(id)object {
+    NSString *jsonStr;
+    if ([NSJSONSerialization isValidJSONObject:object]) {
+        NSData *data = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:nil];
+        if (data) {
+            jsonStr =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        }
+    }
+    return jsonStr;
+}
+
++ (id)jsonToObject:(NSString *)json {
+    NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+}
+
++ (BOOL)checkPhoneNumber:(NSString *)phone {
+    if (!phone) return NO;
+    NSString *regex = @"^1[34578]\\d{9}$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    BOOL isValid = [predicate evaluateWithObject:phone];
+    return isValid;
+}
+
++ (BOOL)checkSmsCode:(NSString *)code {
+    if (!code) return NO;
+    NSString *regex = @"^[0-9]{4}$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    BOOL isValid = [predicate evaluateWithObject:code];
+    return isValid;
+}
+
++ (BOOL)checkPassword:(NSString *)password {
+    if (!password) return NO;
+    NSString *regex = @"^[0-9A-Za-z]]{6,16}$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    BOOL isValid = [predicate evaluateWithObject:password];
+    return isValid;
+}
+
++ (UIImage *)createImageWithColor:(UIColor *)color size:(CGSize)size cornerRadius:(CGFloat)radius {
+    if (size.width == 0) {
+        size.width = SCREEN_WIDTH;
+    }
+    if (size.height == 0) {
+        size.height = SCREEN_HEIGHT;
+    }
+    
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    if (radius > 0) {
+        [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius] addClip];
+    }
+    
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return theImage;
+}
+
++ (NSString *)base64StringFromText:(NSString *)text {
+    NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *base64String = [data base64EncodedStringWithOptions:0];
+    return base64String;
+}
+
++ (NSString *)textFromBase64String:(NSString *)base64 {
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:base64 options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF32StringEncoding];
+    return text;
+}
+
++ (BOOL)hasChinese:(NSString *)str {
+    for(int i=0; i< [str length];i++){
+        int a = [str characterAtIndex:i];
+        if( a > 0x4e00 && a < 0x9fff)
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+@end

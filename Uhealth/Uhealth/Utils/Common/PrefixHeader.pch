@@ -1,0 +1,67 @@
+//
+//  PrefixHeader.pch
+//  EasyTrade
+//
+//  Created by smy on 2017/12/1.
+//  Copyright © 2017年 Rohon. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "NTESGlobalMacro.h"
+
+//全局宏
+#import "ConfigDefine.h"
+#import "MacroDefine.h"
+
+//基础类
+#import "AppDelegate.h"
+#import "AppDelegate+AppService.h"
+#import "Utils.h"
+#import "ZPNetWorkTool.h"
+#import "ZPNetWork.h"
+#import "UHCommonEnumType.h"
+#import "UHImg.h"
+//#import "WebServerManager.h"
+
+//分类
+#import "UIButton+UHButton.h"
+#import "MBProgressHUD+Ex.h"
+#import "UIImage+ZPImage.h"
+#import "NSObject+UHLocalNotification.h"
+#import "UITextField+DatePicker.h"
+#import "UIBarButtonItem+Convenience.h"
+
+//第三方
+#import "SDAutoLayout.h"
+//#import "UIView+Toast.h"
+#import "MJExtension.h"
+#import "LEEAlert.h"
+#import "ZPTextView.h"
+#import "ZPNotfication.h"
+#import "EBBannerView.h"
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+#import "MBProgressHUD.h"
+#import "LYEmptyViewHeader.h"
+#import "HYBImageCliped.h"
+
+#define NTES_USE_CLEAR_BAR - (BOOL)useClearBar{return YES;}
+
+#define NTES_FORBID_INTERACTIVE_POP - (BOOL)forbidInteractivePop{return YES;}
+
+
+#ifdef DEBUG
+#define ZPLog(...) NSLog(__VA_ARGS__)
+
+#else
+
+#define ZPLog(...)
+#endif
+
+#endif
+#endif /* PrefixHeader_pch */

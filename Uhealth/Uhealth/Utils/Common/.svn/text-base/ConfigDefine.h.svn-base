@@ -1,0 +1,89 @@
+//
+//  ConfigDefine.h
+//  EasyTrade
+//
+//  Created by smy on 2017/12/1.
+//  Copyright © 2017年 Rohon. All rights reserved.
+//
+
+#ifndef ConfigDefine_h
+#define ConfigDefine_h
+//项目相关宏定义
+
+#pragma mark - ——————— 服务器地址 ————————
+#define SERVER_ENVIRONMENT kProduction
+#define kProduction @"ws://139.224.229.253:19939"
+#define kTest @"ws://192.168.1.49:19839"
+#define kDevelopment @"ws://210.22.96.58:19939"
+#define ktmp @"ws://192.168.1.70:19839"
+
+#define kAppStoreUrl @""
+#define kAppStoreIdentifier @""
+#define kQQAppId @"1105367077"
+#define kWXAppId @"wx49e16ef4de34d773"
+#define kWXSecret @"16faf1cde163fccba0c370e381d7a652"
+#define PRODUCT_VERSION     [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleShortVersionString"]
+
+#pragma mark - ——————— 颜色相关 ————————
+//命名时以color结尾，使用时可以输入kcolor直接找到
+//主背景色
+#define KBackgroundColor UIColorFromRGB(0x212532)
+//nav背景色
+#define KNavBackgroundColor UIColorFromRGB(0x383e50)
+//非主力合约色
+#define KCommonSymbolColor UIColorFromRGB(0x323749)
+//常规蓝色
+#define KCommonBlue UIColorFromRGB(0x4a90e2)
+//常规绿色 跌
+#define KCommonGreen UIColorFromRGB(0x7ed321)
+//常规红色 涨
+#define KCommonRed UIColorFromRGB(0xff4343)
+//常规黄色
+#define KCommonYellow UIColorFromRGB(0xf5a623)
+//常规白色
+#define KCommonWhite UIColorFromRGB(0xffffff)
+//常规白色
+#define KCommonBlack UIColorFromRGB(0x000000)
+//交易界面的黑色分割线
+#define KCommonBlackLine UIColorFromRGB(0x1f222d)
+
+//输入框背景色
+#define KTextFieldBackColor UIColorFromRGB(0x4c5263)
+
+#pragma mark - ——————— 字号相关 ————————
+#define SYS_FONT(x) [UIFont systemFontOfSize:x]
+//integer转换为string
+#define String_Integer(value) [NSString stringWithFormat:@"%ld",value]
+
+#pragma mark - 公共描述文字
+#define kErrorSocketDisconnect @"当前网络状况不佳，请稍后重试"
+
+#pragma mark - NotificationName
+#define kNotificationWXResp @"kNotificationWXResp"
+#define kNotificationLoginSuccess @"kNotificationLoginSuccess"
+#define kNotificationLogoutSuccess @"kNotificationLogoutSuccess"
+#define kNotificationExchangesPrepared @"kNotificationExchangesPrepared"
+#define kNotificationSymbolPrepared @"kNotificationSymbolPrepared"
+#define kNotificationSymbolFail @"kNotificationSymbolFail"
+
+// 1物理像素的pt值，常用于画水平或垂直分割线，iOS7下一律为0.5
+#define ONE_PIXEL 1.0f/([[UIScreen mainScreen] respondsToSelector:@selector(nativeScale)] ? [UIScreen mainScreen].nativeScale : 2);
+
+//UserDefaults存储的key值
+//验证码绑定的字符串
+#define keyOfSmsRes @"keyOfSmsRes"
+
+//登录用户信息
+#define keyOfToken @"keyOfToken"
+#define keyOfLoginType @"keyOfLoginType"
+#define keyOfUserId @"keyOfUserId"
+#define keyOfUserName @"keyOfUserName"
+#define keyOfOpenId @"keyOfOpenId"
+#define keyOfUserPhone @"keyOfUserPhone"
+#define keyOfUserPassword @"keyOfUserPassword"
+#define keyOfRSAPrivateKey @"keyOfRSAPrivateKey"//rsa私钥
+#define keyOfSymbolUrl @"keyOfSymbolUrl"//合约表下载地址
+#define keyOfSymolUpdateTime @"keyOfSymolUpdateTime"//合约表更新时间
+#define keyOfSymbolTable @"keyOfSymbolTable"//下载到的原始合约表
+#define keyOfOptionSymbols @"keyOfOptionSymbols"//自选合约
+#endif /* ConfigDefine_h */

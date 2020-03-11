@@ -1,0 +1,31 @@
+//
+//  PrefixHeader.pch
+//  EasyTrade
+//
+//  Created by smy on 2017/12/1.
+//  Copyright © 2017年 Rohon. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//全局宏
+#import "ConfigDefine.h"
+#import "MacroDefine.h"
+
+//基础类
+#import "AppDelegate.h"
+#import "AppDelegate+AppService.h"
+#import "Utils.h"
+#import "WebServerManager.h"
+
+//第三方
+#import "EasyTrade-Bridging-Header.h"
+#import "SDAutoLayout.h"
+#import "UIView+Toast.h"
+#import "MJExtension.h"
+
+#endif /* PrefixHeader_pch */
